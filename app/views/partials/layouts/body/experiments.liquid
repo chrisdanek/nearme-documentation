@@ -1,0 +1,16 @@
+{%- assign min = 1 -%}
+{%- assign max = 3 -%}
+{%- assign diff = max | minus: min -%}
+{%- assign r = "now" | date: "%N" | modulo: diff | plus: min -%}
+
+{% if context.session.test == blank %}
+  {% session test = r %}
+
+  {% if r == 1 %}
+    {% log context.session.test, type: 'test' %}
+    {% else %}
+    {% log context.session.test, type: 'test' %}
+  {% endif %}
+{% endif %}
+
+<script>console.log('{{ context.session }}');</script>
